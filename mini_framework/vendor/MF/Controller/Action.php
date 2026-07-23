@@ -1,22 +1,35 @@
 <?php
-    namespace MF\Controller;
 
-    abstract class Action{
-        protected $view;
+namespace MF\Controller;
 
-        public function __construct(){
-            $this->view = new stdClass();
-        }
+abstract class Action
+{
+    protected $view;
+    protected $action;
 
-        protected function render($view){
-            $classAtual = get_class($this);
+    public function __construct()
+    {
+        $this->view = new \stdClass();
+    }
 
-            $classAtual = str_replace('App\\Controllers\\', '', $classAtual);
+    protected function render($action, $layout = true)
+    {
+        $this->action = $action;
 
-            $classAtual = strtolower(str_replace('Controller', '', $classAtual));
-
-            require_once "../App/Views/$classAtual/$view.phtml";
+        if ($layout == true) {
+            require_once __DIR__ . '/../../../App/Views/layout1.phtml';
+        } else {
+            $this->content();
         }
     }
 
-?>
+    protected function content()
+    {
+        $classAtual = get_class($this);
+
+        $classAtual = str_replace('App\\Controllers\\', '', $classAtual);
+        $classAtual = strtolower(str_replace('Controller', '', $classAtual));
+
+        require_once __DIR__ . '/../../../App/Views/' . $classAtual . '/' . $this->action . '.phtml';
+    }
+}

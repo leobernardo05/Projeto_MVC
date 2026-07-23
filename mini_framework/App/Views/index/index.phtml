@@ -1,0 +1,11 @@
+<h1>index</h1>
+<hr>
+<?php 
+    echo '<pre>';
+        print_r($this->view->dados);
+    echo '</pre>';
+    foreach ($this->view->dados as $indice => $produto) { ?>
+    <?= $produto['id'] ?><br>
+    <?= $produto['descricao'] ?><br>
+    <?= $produto['preco'] ?><br>
+<?php } ?>
