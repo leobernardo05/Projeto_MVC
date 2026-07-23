@@ -1,13 +1,17 @@
 <?php
-    namespace App\Controllers\
+    namespace App\Controllers;
 
-    class indexController{
+    class IndexController{
         public function index(){
-            echo 'Chegamos ao indexController e disparamos a action index';
+            $dados = array('Sofá', 'Cadeira', 'Cama');
+            require_once "../App/Views/index.phtml";
         }
 
         public function sobreNos(){
-            echo 'Chegamos ao IndexController e disparamamos a action sobreNos'
+            $dados = array('Notebook', 'Smartphone');
+            require_once "../App/Views/sobreNos.phtml";
         }
+
+
     }
 ?>
