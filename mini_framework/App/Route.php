@@ -2,22 +2,6 @@
     namespace App;  
 
     class Route {
-        private $routes;
-
-        public function __construct(){
-            $this->initRoutes();   
-            $this->run($this->getUrl())
-        }
-
-        public function getRoutes(){
-            return $this->routes;
-        }
-
-        public function setRoutes(array $routes){
-            $this->routes = $routes;
-        }
-
-
         public function initRoutes(){
             $routes['home'] = array(
                 'route' => '/',
@@ -40,7 +24,7 @@
                 // code
                 print_r($route);
                 echo '<br><br><br>';
-                
+
                 if($url == $route['route']){
                     $class = "App\\Controllers\\".ucfirst(route['controller']);
 
