@@ -1,17 +1,38 @@
 <?php
-    namespace App\Controllers;
 
-    class IndexController{
-        public function index(){
-            $dados = array('Sofá', 'Cadeira', 'Cama');
-            require_once "../App/Views/index.phtml";
-        }
+namespace App\Controllers;
 
-        public function sobreNos(){
-            $dados = array('Notebook', 'Smartphone');
-            require_once "../App/Views/sobreNos.phtml";
-        }
+use MF\Controller\Action;
 
+class IndexController extends Action
+{
+    private $view;
 
+    public function __construct()
+    {
+        $this->view = new \stdClass();
     }
-?>
+
+    public function index()
+    {
+        $this->view->dados = array(
+            'Sofá',
+            'Cadeira',
+            'Cama'
+        );
+
+        $this->render('index');
+    }
+
+    public function sobreNos()
+    {
+        $this->view->dados = array(
+            'Notebook',
+            'Smartphone'
+        );
+
+        $this->render('sobreNos');
+    }
+
+    
+}
